@@ -7,7 +7,7 @@ function Create({ setTodos }) {
       
 
     const handleAdd = () => {
-        axios.post(`${BASEURL}/add/`, { task: task })
+        axios.post(`${BASEURL}add`, { task: task })
             .then(result => {
                 setTodos(prevTodos => [...prevTodos, result.data]);
                 setTask("");

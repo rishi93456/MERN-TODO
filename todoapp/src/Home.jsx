@@ -10,13 +10,13 @@ import { BASEURL } from "./url"
 function Home() {
     const [todos, setTodos] = useState([])
     useEffect(() => {  
-        axios.get(`${BASEURL}/get`)
+        axios.get(`${BASEURL}get`)
   .then(result => setTodos(result.data))
   .catch(err => console.log(err))
     }, [])
 
     const handleEdit = (_id) => {
-        axios.put(`${BASEURL}/update/${_id}`)
+        axios.put(`${BASEURL}update/${_id}`)
             .then(result => {
                 setTodos(todos.map(todo => todo._id === _id ? result.data : todo));
             })
@@ -24,7 +24,7 @@ function Home() {
     };
 
     const handleDelete = (_id) => {
-        axios.delete(`${BASEURL}/delete/${_id}`)
+        axios.delete(`${BASEURL}delete/${_id}`)
             .then(() => {
                 setTodos(todos.filter(todo => todo._id !== _id));
             })
@@ -64,3 +64,4 @@ function Home() {
 }
 
 export default Home;
+ 
