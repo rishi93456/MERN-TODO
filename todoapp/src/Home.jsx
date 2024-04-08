@@ -18,7 +18,7 @@ function Home() {
     const handleEdit = (_id) => {
         axios.put(`${BASEURL}update/${_id}`)
             .then(result => {
-                setTodos(todos.map(todo => todo._id === _id ? result.data : todo));
+                location.reload()
             })
             .catch(err => console.log(err));
     };
