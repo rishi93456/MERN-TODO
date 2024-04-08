@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import axios from 'axios'
+import { BASEURL } from "./url"
 
 function Create({ setTodos }) {
     const [task, setTask] = useState("");
       
 
     const handleAdd = () => {
-        axios.post(`http://localhost:3000/add/`, { task: task })
+        axios.post(`${BASEURL}/add/`, { task: task })
             .then(result => {
                 setTodos(prevTodos => [...prevTodos, result.data]);
                 setTask("");
