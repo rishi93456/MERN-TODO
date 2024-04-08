@@ -11,14 +11,16 @@ function Home() {
     const [todos, setTodos] = useState([])
     useEffect(() => {  
         axios.get(`${BASEURL}get`)
-  .then(result => setTodos(result.data))
-  .catch(err => console.log(err))
+            .then(result => setTodos(result.data))
+            .catch(err => console.log(err))
     }, [])
 
     const handleEdit = (_id) => {
         axios.put(`${BASEURL}update/${_id}`)
             .then(result => {
-                setTodos(todos.map(todo => todo._id === _id ? result.data : todo));
+                if(result.status === 200) {
+                    setTodos(todos.map(todo => todo._id === _id ? result.data : todo));
+                }
             })
             .catch(err => console.log(err));
     };
@@ -64,4 +66,3 @@ function Home() {
 }
 
 export default Home;
- 
